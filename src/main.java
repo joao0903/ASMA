@@ -22,11 +22,9 @@ public class main {
         Profile profile = new ProfileImpl();
         profile.setParameter(Profile.MAIN_HOST, "localhost");
         profile.setParameter(Profile.CONTAINER_NAME, "MainContainer");
+        profile.setParameter(Profile.GUI, "true");
 
-        runtime.createMainContainer(profile);
-
-        ContainerController container = runtime.createAgentContainer(profile);
-        AgentController agentController;
+        ContainerController container = runtime.createMainContainer(profile);
 
         try {
             for(int i = 0; i < 10; i++) {
@@ -41,7 +39,6 @@ public class main {
             e.printStackTrace();
         }
 
-        //client.test_print();
         System.out.println("OUT");
     }
 }
