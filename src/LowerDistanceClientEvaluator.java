@@ -17,7 +17,7 @@ public class LowerDistanceClientEvaluator extends ClientEvaluator {
     protected int evaluateProposal(ACLMessage proposeMsg) {
 
         // Check distance to restaurant
-        int dist = distanceToParking(agent.getPosition(), proposal.restaurantPosition);
+        int dist = (int)proposal.getDistanceCost();
 
         // TODO Add a cap to the distance travelled
 

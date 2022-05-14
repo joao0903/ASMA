@@ -13,6 +13,9 @@ import java.io.IOException;
 public class deliverBehaviour extends ContractNetResponder {
 
     deliverAgent agent;
+    Point restaurantPosition;
+    clientAgentProposal clientProposal;
+    double distanceClientRestaurant;
 
     public deliverBehaviour(Agent a, MessageTemplate mt) {
         super(a, mt);
@@ -26,8 +29,9 @@ public class deliverBehaviour extends ContractNetResponder {
 
         // Build proposal object
         Point deliverPosition = agent.getPosition();
+        //Point restaurantPosition = cfp.getContent();
 
-        deliverAgentProposal proposalTerms = new deliverAgentProposal(deliverPosition);
+        deliverAgentProposal proposalTerms = new deliverAgentProposal(deliverPosition, restaurantPosition, distanceClientRestaurant);
 
         try {
             propose.setContentObject(proposalTerms);
@@ -58,7 +62,10 @@ public class deliverBehaviour extends ContractNetResponder {
     protected ACLMessage handleCfp(ACLMessage cfp) throws NotUnderstoodException, RefuseException {
 
         // Get the client agent proposal sent with the cfp
-        clientAgentProposal clientProposal = getClientAgentProposal(cfp);
+        clientProposal = getClientAgentProposal(cfp);
+
+        restaurantPosition = clientProposal.getRestaurantPosition();
+        distanceClientRestaurant = clientProposal.getDistance_client_restaurant();
 
         Logger.getInstance().logPrint("Agent " + cfp.getSender().getLocalName() + " exists (?)");
 

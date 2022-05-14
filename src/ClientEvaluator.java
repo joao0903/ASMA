@@ -4,7 +4,7 @@ import jade.lang.acl.ACLMessage;
 
 public abstract class ClientEvaluator {
 
-    clientAgent agent;
+    clientAgent clientAgent;
     deliverAgentProposal proposal;
 
     /**
@@ -14,7 +14,7 @@ public abstract class ClientEvaluator {
      * @param agent the evaluating car agent
      */
     public ClientEvaluator(clientAgent agent) {
-        this.agent = agent;
+        this.clientAgent = agent;
     }
 
     /**
@@ -29,12 +29,12 @@ public abstract class ClientEvaluator {
     /**
      * Returns the rounded euclidean distance between 2 points.
      *
-     * @param carCoords the car agent coordinates
-     * @param parkingLotCoords the parking lot agent coordinates
+     * @param clientPosition the car agent coordinates
+     * @param deliverPosition the parking lot agent coordinates
      * @return the rounded euclidean distance between the 2 agents
      */
-    protected int distanceToParking(Point carCoords, Point parkingLotCoords) {
-        return (int) carCoords.distance(parkingLotCoords);
+    protected int distanceToDeliver(Point clientPosition, Point deliverPosition) {
+        return (int) clientPosition.distance(deliverPosition);
     }
 
     /**

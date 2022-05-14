@@ -3,17 +3,19 @@ import java.io.Serializable;
 
 public class deliverAgentProposal implements Serializable {
     Point restaurantPosition;
-    double cost;
+    double distanceCost;
 
-    public deliverAgentProposal(Point deliverPosition){
-        restaurantPosition = this.setPosition();
-        cost = Math.abs(restaurantPosition.distance(deliverPosition));
+    public deliverAgentProposal(Point deliverPosition, Point restaurantPosition, double distanceClientRestaurant){
+        this.restaurantPosition = restaurantPosition;
+        this.distanceCost = deliverPosition.distance(restaurantPosition) + distanceClientRestaurant;
     }
 
-    public Point setPosition(){
-        int random_x = (int)Math.floor(Math.random()*(20+1)); // Random from 0 to 20
-        int random_y = (int)Math.floor(Math.random()*(20+1)); // Random from 0 to 20
 
-        return new Point(random_x, random_y);
+    public Point getRestaurantPosition() {
+        return restaurantPosition;
+    }
+
+    public double getDistanceCost() {
+        return distanceCost;
     }
 }

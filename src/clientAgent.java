@@ -87,7 +87,7 @@ public class clientAgent extends Agent {
         msg.setReplyByDate(new Date(System.currentTimeMillis() + 10000));
 
         // Set proposal parameters
-        msg.setContentObject(new clientAgentProposal(this.position, this.position));
+        msg.setContentObject(new clientAgentProposal(this.position, this.setPosition())); // Creates proposal for arbitrary restaurant
 
         addBehaviour(new clientBehaviour(this, msg));
     }
