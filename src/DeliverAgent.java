@@ -1,18 +1,12 @@
-import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
-import jade.wrapper.AgentController;
-import jade.wrapper.StaleProxyException;
 
-import javax.swing.*;
 import java.awt.*;
 
 
-public class deliverAgent extends Agent{
+public class DeliverAgent extends Agent{
 
     private Point position;
 
@@ -53,7 +47,7 @@ public class deliverAgent extends Agent{
                 MessageTemplate.MatchProtocol(FIPANames.InteractionProtocol.FIPA_CONTRACT_NET),
                 MessageTemplate.MatchPerformative(ACLMessage.CFP));
 
-        addBehaviour(new deliverBehaviour(this, template));
+        addBehaviour(new DeliverBehaviour(this, template));
     }
 
     public Point getPosition(){

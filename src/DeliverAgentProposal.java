@@ -1,11 +1,11 @@
 import java.awt.*;
 import java.io.Serializable;
 
-public class deliverAgentProposal implements Serializable {
+public class DeliverAgentProposal implements Serializable {
     Point restaurantPosition;
     double distanceCost;
 
-    public deliverAgentProposal(Point deliverPosition, Point restaurantPosition, double distanceClientRestaurant){
+    public DeliverAgentProposal(Point deliverPosition, Point restaurantPosition, double distanceClientRestaurant){
         this.restaurantPosition = restaurantPosition;
         this.distanceCost = deliverPosition.distance(restaurantPosition) + distanceClientRestaurant;
     }

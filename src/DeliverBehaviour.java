@@ -10,16 +10,16 @@ import jade.proto.ContractNetResponder;
 import java.awt.*;
 import java.io.IOException;
 
-public class deliverBehaviour extends ContractNetResponder {
+public class DeliverBehaviour extends ContractNetResponder {
 
-    deliverAgent agent;
+    DeliverAgent agent;
     Point restaurantPosition;
-    clientAgentProposal clientProposal;
+    ClientAgentProposal clientProposal;
     double distanceClientRestaurant;
 
-    public deliverBehaviour(Agent a, MessageTemplate mt) {
+    public DeliverBehaviour(Agent a, MessageTemplate mt) {
         super(a, mt);
-        this.agent = (deliverAgent) a;
+        this.agent = (DeliverAgent) a;
     }
 
     private ACLMessage buildProposal(ACLMessage cfp) {
@@ -31,24 +31,24 @@ public class deliverBehaviour extends ContractNetResponder {
         Point deliverPosition = agent.getPosition();
         //Point restaurantPosition = cfp.getContent();
 
-        deliverAgentProposal proposalTerms = new deliverAgentProposal(deliverPosition, restaurantPosition, distanceClientRestaurant);
+        DeliverAgentProposal proposalTerms = new DeliverAgentProposal(deliverPosition, restaurantPosition, distanceClientRestaurant);
 
         try {
             propose.setContentObject(proposalTerms);
         } catch(IOException e) {
             e.printStackTrace();
-            System.err.println("I/O Exception in parking lot agent!");
+            System.err.println("I/O Exception in deliver agent!");
             System.exit(1);
         }
 
         return propose;
     }
 
-    private clientAgentProposal getClientAgentProposal(ACLMessage msg) {
+    private ClientAgentProposal getClientAgentProposal(ACLMessage msg) {
 
-        clientAgentProposal clientAgentProposal = null;
+        ClientAgentProposal clientAgentProposal = null;
         try {
-            clientAgentProposal = (clientAgentProposal) msg.getContentObject();
+            clientAgentProposal = (ClientAgentProposal) msg.getContentObject();
         } catch(UnreadableException e) {
             e.printStackTrace();
             System.err.println("Error occured during the decoding of the content of the ACLMessage!");

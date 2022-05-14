@@ -1,4 +1,3 @@
-import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentController;
@@ -9,12 +8,12 @@ import jade.wrapper.StaleProxyException;
 import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class main {
+public class Main {
 
     private static ArrayList<AgentController> clientAgents = new ArrayList<AgentController>();
     private static ArrayList<AgentController> deliverAgents = new ArrayList<AgentController>();
 
-    // Queue of cars awaiting negotiation
+    // Queue of clients awaiting negotiation
     private static LinkedBlockingQueue<String> waitingClients = new LinkedBlockingQueue<String>();
 
 
@@ -34,11 +33,11 @@ public class main {
 
         try {
             for(int i = 0; i < 3; i++) {
-                clientAgents.add(container.createNewAgent("ClientAgent" + i, "clientAgent", null));
+                clientAgents.add(container.createNewAgent("ClientAgent" + i, "ClientAgent", null));
                 //Logger.getInstance().logPrint("Created Client Agent " + i);
                 waitingClients.add("ClientAgent" + i);
 
-                deliverAgents.add(container.createNewAgent("DeliverAgent" + i, "deliverAgent", null));
+                deliverAgents.add(container.createNewAgent("DeliverAgent" + i, "DeliverAgent", null));
                 //Logger.getInstance().logPrint("Created Deliver Agent " + i);
 
             }

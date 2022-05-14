@@ -1,21 +1,18 @@
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 
-import javax.swing.text.Position;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
-public class clientAgent extends Agent {
+public class ClientAgent extends Agent {
 
     private String localName;
 
@@ -46,7 +43,7 @@ public class clientAgent extends Agent {
             System.exit(1);
         } catch(IOException e) {
             e.printStackTrace();
-            System.err.println("I/O Exception in car agent!");
+            System.err.println("I/O Exception in client agent!");
             System.exit(1);
         }
     }
@@ -77,7 +74,7 @@ public class clientAgent extends Agent {
         ACLMessage msg = new ACLMessage(ACLMessage.CFP);
 
         // Add all deliverers as receivers
-        ArrayList<AgentController> deliverAgents = main.getDeliverAgents();
+        ArrayList<AgentController> deliverAgents = Main.getDeliverAgents();
         for(AgentController agent : deliverAgents) {
             msg.addReceiver(new AID(agent.getName(), AID.ISGUID));
         }
@@ -87,15 +84,15 @@ public class clientAgent extends Agent {
         msg.setReplyByDate(new Date(System.currentTimeMillis() + 10000));
 
         // Set proposal parameters
-        msg.setContentObject(new clientAgentProposal(this.position, this.setPosition())); // Creates proposal for arbitrary restaurant
+        msg.setContentObject(new ClientAgentProposal(this.position, this.setPosition())); // Creates proposal for arbitrary restaurant
 
-        addBehaviour(new clientBehaviour(this, msg));
+        addBehaviour(new ClientBehaviour(this, msg));
     }
 
 
     private void checkQueue() throws InterruptedException {
 
-        LinkedBlockingQueue<String> queue = main.getWaitingClients();
+        LinkedBlockingQueue<String> queue = Main.getWaitingClients();
 
         // Block in queue if current head isn't the same ID as this agent
         if(!queue.peek().equals(localName)) {

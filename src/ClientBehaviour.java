@@ -7,18 +7,18 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 import jade.proto.ContractNetInitiator;
 
-public class clientBehaviour extends ContractNetInitiator {
+public class ClientBehaviour extends ContractNetInitiator {
 
-    clientAgent agent;
+    ClientAgent agent;
 
-    public clientBehaviour(Agent a, ACLMessage cfp) {
+    public ClientBehaviour(Agent a, ACLMessage cfp) {
         super(a, cfp);
-        this.agent = (clientAgent) a;
+        this.agent = (ClientAgent) a;
     }
 
     private void removeFromQueue() {
 
-        LinkedBlockingQueue<String> queue = main.getWaitingClients();
+        LinkedBlockingQueue<String> queue = Main.getWaitingClients();
 
         // Remove head from queue since it was the agent that just negotiated
         try {
@@ -40,11 +40,11 @@ public class clientBehaviour extends ContractNetInitiator {
         }
     }
 
-    private deliverAgentProposal getDeliverAgentProposal(ACLMessage msg) {
+    private DeliverAgentProposal getDeliverAgentProposal(ACLMessage msg) {
 
-        deliverAgentProposal deliveragentProposal = null;
+        DeliverAgentProposal deliveragentProposal = null;
         try {
-            deliveragentProposal = (deliverAgentProposal) msg.getContentObject();
+            deliveragentProposal = (DeliverAgentProposal) msg.getContentObject();
         } catch(UnreadableException e) {
             e.printStackTrace();
             System.err.println("Error occured during the decoding of the content of the ACLMessage!");
@@ -57,7 +57,7 @@ public class clientBehaviour extends ContractNetInitiator {
     @Override
     protected void handlePropose(ACLMessage propose, Vector v) {
 
-        deliverAgentProposal deliverAgentProposal = getDeliverAgentProposal(propose);
+        DeliverAgentProposal deliverAgentProposal = getDeliverAgentProposal(propose);
 
         Logger.getInstance().logPrint(propose.getSender().getName() + "proposal has been received by " + agent.getName());
     }
