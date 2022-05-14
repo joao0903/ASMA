@@ -15,18 +15,16 @@ public class deliverAgent extends Agent{
 
     private Point position;
 
-
+    @Override
     protected void setup() {
         addBehaviour(new CyclicBehaviour() {
             @Override
             public void action() {
-                // Receive the clients message
                 ACLMessage msg = receive();
                 if (msg!= null){
-                    JOptionPane.showMessageDialog(null, "Message received :" + msg.getContent());
+                    Logger.getInstance().logPrint("Received message" + msg.getContent());
                 }else block();
             }
         });
     }
-
 }
