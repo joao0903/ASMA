@@ -96,7 +96,7 @@ public class clientBehaviour extends ContractNetInitiator {
 
                 // Evaluate proposal using the agent's evaluator (personality)
                 ClientEvaluator eval = agent.getEval();
-                eval.setProposal(getDeliverAgentProposal(msg)); // TODO Do a deliver agent proposal
+                eval.setProposal(getDeliverAgentProposal(msg));
                 int proposal = eval.evaluateProposal(msg);
 
                 // Lower values are better since cost and distance are both best when minimised
