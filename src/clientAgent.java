@@ -8,6 +8,8 @@ import jade.wrapper.StaleProxyException;
 
 
 public class clientAgent extends Agent {
+
+
     @Override
     protected void setup() {
         addBehaviour(new OneShotBehaviour() {
