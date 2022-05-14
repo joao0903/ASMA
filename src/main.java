@@ -33,7 +33,7 @@ public class main {
         ContainerController container = runtime.createMainContainer(profile);
 
         try {
-            for(int i = 0; i < 10; i++) {
+            for(int i = 0; i < 3; i++) {
                 clientAgents.add(container.createNewAgent("ClientAgent" + i, "clientAgent", null));
                 //Logger.getInstance().logPrint("Created Client Agent " + i);
                 waitingClients.add("ClientAgent" + i);

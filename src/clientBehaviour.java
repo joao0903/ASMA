@@ -59,7 +59,7 @@ public class clientBehaviour extends ContractNetInitiator {
 
         deliverAgentProposal deliverAgentProposal = getDeliverAgentProposal(propose);
 
-        Logger.getInstance().logPrint("Deliver agent proposal has been received by " + agent.getName()); // TODO Add more info
+        Logger.getInstance().logPrint(propose.getSender().getName() + "proposal has been received by " + agent.getName());
     }
 
     @Override
