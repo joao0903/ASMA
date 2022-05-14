@@ -17,6 +17,8 @@ public class main {
     public static void main(String[] args) {
         System.out.println("IN");
 
+        Logger.getInstance().initLog(Logger.LogMethod.BOTH);
+
         Runtime runtime = Runtime.instance();
 
         Profile profile = new ProfileImpl();
@@ -28,10 +30,18 @@ public class main {
 
         try {
             for(int i = 0; i < 10; i++) {
-                clientAgents.add(container.createNewAgent("AgentNumber" + i, "clientAgent", null));
+                clientAgents.add(container.createNewAgent("ClientAgent" + i, "clientAgent", null));
+                Logger.getInstance().logPrint("Created Client Agent " + i);
+                deliverAgents.add(container.createNewAgent("DeliverAgent" + i, "deliverAgent", null));
+                Logger.getInstance().logPrint("Created Deliver Agent " + i);
+
             }
 
             for(AgentController agent : clientAgents) {
+                agent.start();
+            }
+
+            for(AgentController agent : deliverAgents) {
                 agent.start();
             }
 
