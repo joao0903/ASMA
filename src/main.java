@@ -35,11 +35,11 @@ public class main {
         try {
             for(int i = 0; i < 10; i++) {
                 clientAgents.add(container.createNewAgent("ClientAgent" + i, "clientAgent", null));
-                Logger.getInstance().logPrint("Created Client Agent " + i);
+                //Logger.getInstance().logPrint("Created Client Agent " + i);
                 waitingClients.add("ClientAgent" + i);
 
                 deliverAgents.add(container.createNewAgent("DeliverAgent" + i, "deliverAgent", null));
-                Logger.getInstance().logPrint("Created Deliver Agent " + i);
+                //Logger.getInstance().logPrint("Created Deliver Agent " + i);
 
             }
 

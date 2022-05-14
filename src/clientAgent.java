@@ -6,10 +6,12 @@ import jade.lang.acl.ACLMessage;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 
+import javax.swing.text.Position;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
@@ -19,19 +21,17 @@ public class clientAgent extends Agent {
 
     private Point position;
 
-    public Point setPosition(){
-        int random_x = (int)Math.floor(Math.random()*(20+1)); // Random from 0 to 20
-        int random_y = (int)Math.floor(Math.random()*(20+1)); // Random from 0 to 20
-        Logger.getInstance().logPrint("Points created " + random_x + ", " + random_y);
+    private ClientEvaluator eval;
 
-        return new Point(random_x, random_y);
-    }
+
 
     @Override
     protected void setup() {
         this.position = this.setPosition();
 
         this.logClientAgent();
+
+        eval = selectClientEvaluator();
 
         localName = this.getAID().getLocalName();
         try {
@@ -49,6 +49,20 @@ public class clientAgent extends Agent {
             System.err.println("I/O Exception in car agent!");
             System.exit(1);
         }
+    }
+
+    private ClientEvaluator selectClientEvaluator() {
+
+        return new LowerDistanceClientEvaluator(this);
+
+    }
+
+    public Point setPosition(){
+        int random_x = (int)Math.floor(Math.random()*(20+1)); // Random from 0 to 20
+        int random_y = (int)Math.floor(Math.random()*(20+1)); // Random from 0 to 20
+        Logger.getInstance().logPrint("Points created " + random_x + ", " + random_y);
+
+        return new Point(random_x, random_y);
     }
 
     private void logClientAgent(){
@@ -96,6 +110,14 @@ public class clientAgent extends Agent {
         }
 
         Logger.getInstance().logPrint("my turn");
+    }
+
+    public ClientEvaluator getEval() {
+        return eval;
+    }
+
+    public Point getPosition(){
+        return this.position;
     }
 
 
