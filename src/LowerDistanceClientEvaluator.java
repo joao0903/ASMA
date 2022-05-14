@@ -12,6 +12,12 @@ public class LowerDistanceClientEvaluator extends ClientEvaluator {
         // Check distance to restaurant
         int dist = (int)proposal.getDistanceCost();
 
+        if(dist > clientAgent.getMaxDistance()) {
+            Logger.getInstance().logPrint("Rejecting proposal of " + proposeMsg.getSender().getLocalName() + " because of distance");
+            return 0;
+        }
+
+
         // TODO Add a cap to the distance travelled
 
         return dist;

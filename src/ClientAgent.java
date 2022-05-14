@@ -20,7 +20,7 @@ public class ClientAgent extends Agent {
 
     private ClientEvaluator eval;
 
-
+    private int maxDistance;
 
     @Override
     protected void setup() {
@@ -29,6 +29,8 @@ public class ClientAgent extends Agent {
         this.logClientAgent();
 
         eval = selectClientEvaluator();
+
+        maxDistance = 50; // TODO Change this for each client
 
         localName = this.getAID().getLocalName();
         try {
@@ -116,5 +118,7 @@ public class ClientAgent extends Agent {
         return this.position;
     }
 
-
+    public int getMaxDistance() {
+        return maxDistance;
+    }
 }
