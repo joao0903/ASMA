@@ -9,8 +9,10 @@ import jade.proto.ContractNetInitiator;
 
 public class clientBehaviour extends ContractNetInitiator {
 
+    clientAgent agent;
 
     public clientBehaviour(Agent a, ACLMessage cfp) {
         super(a, cfp);
+        this.agent = (clientAgent) a;
     }
 }
