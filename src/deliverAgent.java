@@ -11,7 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class delivererAgent extends Agent{
+public class deliverAgent extends Agent{
 
     private Point position;
 
