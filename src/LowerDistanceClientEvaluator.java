@@ -18,6 +18,7 @@ public class LowerDistanceClientEvaluator extends ClientEvaluator {
         }
 
 
+
         // TODO Add a cap to the distance travelled
 
         return dist;

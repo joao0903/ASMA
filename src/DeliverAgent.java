@@ -10,6 +10,12 @@ public class DeliverAgent extends Agent{
 
     private Point position;
 
+    private float fuel;
+
+    private float costPerDistance;
+
+    private boolean available;
+
     public void setup() {
 
         this.initRandomArgs();
@@ -23,6 +29,9 @@ public class DeliverAgent extends Agent{
 
         // Assign values
         position = this.setPosition();
+        fuel = 20;
+        costPerDistance=1;
+        available = true;
 
     }
 
@@ -52,5 +61,29 @@ public class DeliverAgent extends Agent{
 
     public Point getPosition(){
         return this.position;
+    }
+
+    public float getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(float fuel) {
+        this.fuel = fuel;
+    }
+
+    public float getCostPerDistance() {
+        return costPerDistance;
+    }
+
+    public void setCostPerDistance(float costPerDistance) {
+        this.costPerDistance = costPerDistance;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

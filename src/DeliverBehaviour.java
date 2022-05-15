@@ -28,10 +28,10 @@ public class DeliverBehaviour extends ContractNetResponder {
         propose.setPerformative(ACLMessage.PROPOSE);
 
         // Build proposal object
-        Point deliverPosition = agent.getPosition();
+
         //Point restaurantPosition = cfp.getContent();
 
-        DeliverAgentProposal proposalTerms = new DeliverAgentProposal(deliverPosition, restaurantPosition, distanceClientRestaurant);
+        DeliverAgentProposal proposalTerms = new DeliverAgentProposal(agent, restaurantPosition, distanceClientRestaurant);
 
         try {
             propose.setContentObject(proposalTerms);

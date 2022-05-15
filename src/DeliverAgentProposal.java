@@ -5,9 +5,9 @@ public class DeliverAgentProposal implements Serializable {
     Point restaurantPosition;
     double distanceCost;
 
-    public DeliverAgentProposal(Point deliverPosition, Point restaurantPosition, double distanceClientRestaurant){
+    public DeliverAgentProposal(DeliverAgent deliver, Point restaurantPosition, double distanceClientRestaurant){
         this.restaurantPosition = restaurantPosition;
-        this.distanceCost = deliverPosition.distance(restaurantPosition) + distanceClientRestaurant;
+        this.distanceCost = (deliver.getPosition().distance(restaurantPosition) + distanceClientRestaurant)*deliver.getCostPerDistance();
     }
 
 
