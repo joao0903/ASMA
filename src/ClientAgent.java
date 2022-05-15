@@ -22,6 +22,8 @@ public class ClientAgent extends Agent {
 
     private int maxDistance;
 
+    private double timePref;
+
     @Override
     protected void setup() {
         this.position = this.setPosition();

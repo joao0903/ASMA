@@ -13,7 +13,7 @@ public abstract class ClientEvaluator {
     }
 
 
-    protected abstract int evaluateProposal(ACLMessage proposeMsg);
+    protected abstract int evaluateProposalCost(ACLMessage proposeMsg);
 
 
     protected int distanceToDeliver(Point clientPosition, Point deliverPosition) {
@@ -24,5 +24,9 @@ public abstract class ClientEvaluator {
     public void setProposal(DeliverAgentProposal proposal) {
         this.proposal = proposal;
     }
+
+    protected abstract int evaluateProposalTime(ACLMessage proposeMsg);
+    protected abstract int evaluateProposalFuel(ACLMessage proposeMsg);
+
 }
 

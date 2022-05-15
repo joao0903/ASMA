@@ -16,6 +16,8 @@ public class DeliverAgent extends Agent{
 
     private boolean available;
 
+    private float speed;
+
     public void setup() {
 
         this.initRandomArgs();
@@ -32,6 +34,7 @@ public class DeliverAgent extends Agent{
         fuel = 20;
         costPerDistance=1;
         available = true;
+        speed= 2;
 
     }
 
@@ -85,5 +88,13 @@ public class DeliverAgent extends Agent{
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 }
