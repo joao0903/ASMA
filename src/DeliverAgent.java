@@ -49,7 +49,7 @@ public class DeliverAgent extends Agent{
 
         Logger logger = Logger.getInstance();
 
-        logger.logPrint("Created Deliverer Agent at Point " + position.getX() + "," + position.getY());
+        logger.logPrint("Created Deliverer Agent at Point (" + position.getX() + "," + position.getY() + ")");
 
     }
 

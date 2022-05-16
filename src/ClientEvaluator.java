@@ -25,8 +25,11 @@ public abstract class ClientEvaluator {
         this.proposal = proposal;
     }
 
-    protected abstract int evaluateProposalTime(ACLMessage proposeMsg);
-    protected abstract int evaluateProposalFuel(ACLMessage proposeMsg);
+    protected int evaluateProposalFuel(ACLMessage proposeMsg) {
+
+        return  (int)proposal.getEnoughFuel();
+
+    }
 
 }
 

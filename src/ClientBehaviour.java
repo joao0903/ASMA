@@ -59,7 +59,7 @@ public class ClientBehaviour extends ContractNetInitiator {
 
         DeliverAgentProposal deliverAgentProposal = getDeliverAgentProposal(propose);
 
-        Logger.getInstance().logPrint(propose.getSender().getName() + "proposal has been received by " + agent.getName());
+        Logger.getInstance().logPrint(propose.getSender().getLocalName() + "proposal has been received by " + agent.getLocalName());
     }
 
     @Override
@@ -97,9 +97,9 @@ public class ClientBehaviour extends ContractNetInitiator {
                 // Evaluate proposal using the agent's evaluator (personality)
                 ClientEvaluator eval = agent.getEval();
                 eval.setProposal(getDeliverAgentProposal(msg));
-                //TODO fix percentagens
 
-                int proposal = eval.evaluateProposalTime(msg) + eval.evaluateProposalCost(msg);
+                int proposal = eval.evaluateProposalCost(msg);
+
                 if(eval.evaluateProposalFuel(msg)<0){
                     proposal=0;
                 }

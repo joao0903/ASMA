@@ -63,11 +63,8 @@ public class DeliverBehaviour extends ContractNetResponder {
 
         // Get the client agent proposal sent with the cfp
         clientProposal = getClientAgentProposal(cfp);
-
         restaurantPosition = clientProposal.getRestaurantPosition();
         distanceClientRestaurant = clientProposal.getDistance_client_restaurant();
-
-        Logger.getInstance().logPrint("Agent " + cfp.getSender().getLocalName() + " exists (?)");
 
         return buildProposal(cfp);
 

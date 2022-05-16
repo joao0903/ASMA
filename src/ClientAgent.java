@@ -15,24 +15,17 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ClientAgent extends Agent {
 
     private String localName;
-
     private Point position;
-
     private ClientEvaluator eval;
-
     private int maxDistance;
-
     private double timePref;
 
     @Override
     protected void setup() {
         this.position = this.setPosition();
-
         this.logClientAgent();
-
         eval = selectClientEvaluator();
-
-        maxDistance = 50; // TODO Change this for each client
+        maxDistance = 50;
 
         localName = this.getAID().getLocalName();
         try {
@@ -54,7 +47,22 @@ public class ClientAgent extends Agent {
 
     private ClientEvaluator selectClientEvaluator() {
 
-        return new LowerDistanceClientEvaluator(this);
+        ClientEvaluator evaluator;
+
+        int choice = (int) Math.floor(Math.random()*3);
+        switch (choice){
+            case 0:
+                evaluator = new LowerDistanceClientEvaluator(this);
+            case 1:
+                evaluator = new LowerTimeClientEvaluator(this);
+            case 2:
+                evaluator = new BalancedClientEvaluator(this);
+            default:
+                evaluator = new LowerTimeClientEvaluator(this);
+        }
+
+
+        return evaluator;
 
     }
 
@@ -101,7 +109,6 @@ public class ClientAgent extends Agent {
         // Block in queue if current head isn't the same ID as this agent
         if(!queue.peek().equals(localName)) {
 
-            Logger.getInstance().logPrint("waiting in queue");
             synchronized(queue) {
                 while(!queue.peek().equals(localName)) {
                     queue.wait();
@@ -109,7 +116,6 @@ public class ClientAgent extends Agent {
             }
         }
 
-        Logger.getInstance().logPrint("my turn");
     }
 
     public ClientEvaluator getEval() {
