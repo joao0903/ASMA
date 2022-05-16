@@ -18,7 +18,7 @@ public class ClientAgent extends Agent {
     private Point position;
     private ClientEvaluator eval;
     private int maxDistance;
-    private double timePref;
+
 
     @Override
     protected void setup() {

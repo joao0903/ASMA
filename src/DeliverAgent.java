@@ -31,7 +31,7 @@ public class DeliverAgent extends Agent{
 
         // Assign values
         position = this.setPosition();
-        fuel = 20;
+        fuel = 50;
         costPerDistance=1;
         available = true;
         speed= 2;

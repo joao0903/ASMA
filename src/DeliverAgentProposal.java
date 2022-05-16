@@ -11,7 +11,7 @@ public class DeliverAgentProposal implements Serializable {
         this.restaurantPosition = restaurantPosition;
         this.distanceCost = (deliver.getPosition().distance(restaurantPosition) + distanceClientRestaurant)*deliver.getCostPerDistance();
         this.time = (deliver.getPosition().distance(restaurantPosition) + distanceClientRestaurant)/deliver.getSpeed();
-        this.enoughFuel = deliver.getPosition().distance(restaurantPosition) + distanceClientRestaurant - deliver.getFuel();
+        this.enoughFuel = deliver.getFuel()- deliver.getPosition().distance(restaurantPosition) + distanceClientRestaurant ;
     }
 
 
