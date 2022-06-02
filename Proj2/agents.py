@@ -1,4 +1,5 @@
 from mesa import Agent
+import random
 
 class Sheep(Agent):
     
@@ -17,9 +18,18 @@ class Sheep(Agent):
 
     def lose_energy(self):
             self.energy -= 1
+    
+    def eat(self):
+        sameCell= self.model.grid.get_cell_list_contents([self.pos])
+        for agent in sameCell:
+            if(isinstance(agent, Grass)):
+                self.model.grid.remove_agent(agent)
+                self.model.schedule.remove(agent)
+                self.model.num_grass -= 1
+                self.energy += 2
 
     def step(self):
-        print(self.energy)
+        self.eat()
         if self.energy > 0:
             self.lose_energy()
             self.move()
@@ -47,9 +57,23 @@ class Wolf(Agent):
 
     def lose_energy(self):
             self.energy -= 1
+    
+    def eat(self):
+        sameCell= self.model.grid.get_cell_list_contents([self.pos])
+        for agent in sameCell:
+            if(isinstance(agent, Sheep)):
+                self.model.grid.remove_agent(agent)
+                self.model.schedule.remove(agent)
+                self.model.num_sheep -= 1
+                self.energy += 2
+
+ 
+        
+
 
     def step(self):
         self.move()
+        self.eat()
         if self.energy > 0:
             self.lose_energy()
         else:
@@ -78,6 +102,7 @@ class Grass(Agent):
 
     def step(self):
         self.move()
+        
         if self.energy > 0:
             self.lose_energy()
     

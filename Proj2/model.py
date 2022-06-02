@@ -11,7 +11,7 @@ class Model(Model):
     """A model with some number of agents."""
 
     def __init__(self, S, W, G, width, height):
-        number_of_agents=0
+        self.number_of_agents=0
 
         self.num_sheep = S
         self.num_wolfs = W
@@ -34,25 +34,25 @@ class Model(Model):
         
         # Create agents
         for i in range(self.num_sheep):
-            a = Sheep(number_of_agents, self)
+            a = Sheep(self.number_of_agents, self)
             self.schedule.add(a)
-            number_of_agents += 1
+            self.number_of_agents += 1
             # Add the agent to a random grid cell
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
             self.grid.place_agent(a, (x, y))
         for i in range(self.num_wolfs):
-            a = Wolf(number_of_agents, self)
+            a = Wolf(self.number_of_agents, self)
             self.schedule.add(a)
-            number_of_agents += 1
+            self.number_of_agents += 1
             # Add the agent to a random grid cell
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
             self.grid.place_agent(a, (x, y))
         for i in range(self.num_grass):
-            a = Grass(number_of_agents, self)
+            a = Grass(self.number_of_agents, self)
             self.schedule.add(a)
-            number_of_agents += 1
+            self.number_of_agents += 1
             # Add the agent to a random grid cell
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
