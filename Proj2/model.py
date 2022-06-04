@@ -60,19 +60,10 @@ class Model(Model):
         
    
     def step(self):
-        self.datacollector.collect(self)
-        nsheep=len(self.to_remove_sheep)
-        nwolfs=len(self.to_remove_wolfs)
-        for i in range(nsheep):
-            self.grid.remove_agent(self.to_remove_sheep[i])
-            self.schedule.remove(self.to_remove_sheep[i])
-            self.num_sheep -= 1
-        for i in range(nwolfs):
-            self.grid.remove_agent(self.to_remove_wolfs[i])
-            self.schedule.remove(self.to_remove_wolfs[i])
-            self.num_wolfs -= 1
-        self.to_remove_sheep.clear()
-        self.to_remove_wolfs.clear()
         self.schedule.step()
+        self.datacollector.collect(self)
+       
+        
+        
 
         

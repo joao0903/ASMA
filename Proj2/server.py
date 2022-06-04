@@ -29,18 +29,18 @@ def agent_portrayal(agent):
                     "r": 0.5}
         return portrayal
 
-grid = CanvasGrid(agent_portrayal, 10, 10, 500, 500)
+grid = CanvasGrid(agent_portrayal, 50, 50, 500, 500)
 
 
 sheep = {"Label": "Sheep", "Color": "blue"}
 wolfs = {"Label": "Wolf", "Color": "brown"}
 grass = {"Label": "Grass", "Color": "green"}
-
+ 
 
 chart_count = ChartModule([sheep, wolfs, grass])
 server = ModularServer(Model,
                        [grid,chart_count],
                        "Model",
-                       {"S":8, "W":4, "G":10, "width":10, "height":10})
+                       {"S":100, "W":50, "G":150, "width":50, "height":50})
 server.port = 8521 # The default
 server.launch()
