@@ -41,6 +41,6 @@ chart_count = ChartModule([sheep, wolfs, grass])
 server = ModularServer(Model,
                        [grid,chart_count],
                        "Model",
-                       {"S":100, "W":50, "G":150, "width":50, "height":50})
+                       {"S":100, "W":50, "G":150 , "width":50, "height":50})
 server.port = 8521 # The default
 server.launch()

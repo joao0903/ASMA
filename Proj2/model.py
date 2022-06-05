@@ -62,6 +62,15 @@ class Model(Model):
     def step(self):
         self.schedule.step()
         self.datacollector.collect(self)
+        for i in range(20):
+            a = Grass(self.number_of_agents, self)
+            self.schedule.add(a)
+            self.number_of_agents += 1
+            self.num_grass +=1
+            # Add the agent to a random grid cell
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height)
+            self.grid.place_agent(a, (x, y))
        
         
         
