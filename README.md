@@ -10,8 +10,8 @@ Such a system is called unstable if it tends to result in extinction for one or 
 -Energy gained by wolves for each sheep eaten\
 -Probability of reproduction (wolves and sheep)\
 -Amount of grass that grows by step\
--Starting energy (wolves and sheep)\
+-Starting energy (wolves and sheep)
 ### Dependent Variables
 -Number of sheep per step\
 -Number of wolves per step\
--Number of grass per step\
+-Number of grass per step
