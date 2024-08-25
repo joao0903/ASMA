@@ -5,13 +5,13 @@ Such a system is called unstable if it tends to result in extinction for one or 
 
 ## System Variables
 ### Independent Variables
--Initial number of Sheep, wolves and grass
--Energy gained by sheep for each unity of grass eaten
--Energy gained by wolves for each sheep eaten
--Probability of reproduction (wolves and sheep)
--Amount of grass that grows by step
--Starting energy (wolves and sheep)
+-Initial number of Sheep, wolves and grass\
+-Energy gained by sheep for each unity of grass eaten\
+-Energy gained by wolves for each sheep eaten\
+-Probability of reproduction (wolves and sheep)\
+-Amount of grass that grows by step\
+-Starting energy (wolves and sheep)\
 ### Dependent Variables
--Number of sheep per step
--Number of wolves per step
--Number of grass per step
+-Number of sheep per step\
+-Number of wolves per step\
+-Number of grass per step\
