@@ -1,6 +1,6 @@
 # ASMA
 ## Problem Description
-The model implemented in proj2 explores the stability of a predator-prey ecosystem involving Sheep, Wolves and Grass. Our objective is to monitor the evolution and stability of the ecosystem over time. 
+The model implemented in Proj2 explores the stability of a predator-prey ecosystem involving Sheep, Wolves and Grass. Our objective is to monitor the evolution and stability of the ecosystem over time. 
 Such a system is called unstable if it tends to result in extinction for one or more species involved. In contrast, a system is stable if it tends to maintain itself over time, despite fluctuations in population sizes. The model was implemented using Mesa, a agent-based modeling framework for Python. 
 
 ## System Variables
